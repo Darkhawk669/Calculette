@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Calculatrice</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen">0</div>
+        <table>
+            <tr>
+                <td class="blue"><button>1</button></td>
+                <td class="blue"><button>2</button></td>
+                <td class="blue"><button>3</button></td>
+                <td class="yellow"><button>+</button></td>
+            </tr>
+            <tr>
+                <td class="blue"><button>4</button></td>
+                <td class="blue"><button>5</button></td>
+                <td class="blue"><button>6</button></td>
+                <td class="yellow"><button>-</button></td>
+            </tr>
+            <tr>
+                <td class="blue"><button>7</button></td>
+                <td class="blue"><button>8</button></td>
+                <td class="blue"><button>9</button></td>
+                <td class="yellow"><button>x</button></td>
+            </tr>
+            <tr>
+                <td class="blue"><button>0</button></td>
+                <td class="gray"><button>(</button></td>
+                <td class="gray"><button>)</button></td>
+                <td class="yellow"><button>÷</button></td>
+            </tr>
+            <tr>
+                <td class="gray"><button>←</button></td>
+                <td class="gray"><button>.</button></td>
+                <td class="gray" colspan="2"><button>=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var screen = document.querySelector('.screen');
+            var input = '';
+
+            function buttonClick(event) {
+                var key = event.target.textContent;
+
+                if (key === 'x') key = '*';
+                else if (key === '÷') key = '/';
+
+                if (key === '←') {
+                    input = input.slice(0, -1);
+                } else if (key === '=') {
+                    try {
+                        input = eval(input).toString();
+                    } catch (ex) {
+                        input = 'err';
+                    }
+                } else {
+                    input += key;
+                }
+
+                screen.textContent = input;
+            }
+
+            var buttons = document.querySelectorAll('button');
+            buttons.forEach(function(button) {
+                button.addEventListener('click', buttonClick);
+            });
+        });
+    </script>
+</body>
+</html>
+

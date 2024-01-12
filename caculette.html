@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Calculatrice</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen">0</div>
+        <table>
+            <tr>
+                <td class="blue"><button>1</button></td>
+                <td class="blue"><button>2</button></td>
+                <td class="blue"><button>3</button></td>
+                <td class="yellow"><button>+</button></td>
+            </tr>
+            <tr>
+                <td class="blue"><button>4</button></td>
+                <td class="blue"><button>5</button></td>
+                <td class="blue"><button>6</button></td>
+                <td class="yellow"><button>-</button></td>
+            </tr>
+            <tr>
+                <td class="blue"><button>7</button></td>
+                <td class="blue"><button>8</button></td>
+                <td class="blue"><button>9</button></td>
+                <td class="yellow"><button>x</button></td>
+            </tr>
+            <tr>
+                <td class="blue"><button>0</button></td>
+                <td class="gray"><button>(</button></td>
+                <td class="gray"><button>)</button></td>
+                <td class="yellow"><button>÷</button></td>
+            </tr>
+            <tr>
+                <td class="gray"><button>←</button></td>
+                <td class="gray"><button>.</button></td>
+                <td class="gray" colspan="2"><button>=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        // jshint browser:true, devel:true
+    
+   function button_click(evt) {
+     var input = document.getElementsByTagName("input")[0];
+     var key = evt.target.textContent;
+     // var key = evt.target.value; // with input type button usage
+     if (key === "*" || key === "x") {
+         key = "*";
+     } else if (key === "/" || key === '÷') {
+         key = "/";
+     } else if (key === "←" || key === "&lt;-") {
+         key = "<-";
+     }
+    
+     if (key === "<-") {
+         input.value = input.value.substr(0, input.value.length-1);
+         if (input.value === "") {
+             input.value = "0";
+         }
+     } else if (key === "=") {
+         try {
+             input.value = eval(input.value);
+         }
+         catch (ex) {
+             input.value = "err";
+         }
+     } else {
+         if (input.value === "0" || input.value === "err") {
+             input.value = "";
+         }
+         input.value += key;
+     }
+   }
+    
+   window.addEventListener("load", function(evt) {
+     // Pour une utilisation avec des <buttons>
+     var buttons = document.getElementsByTagName("button");
+     // Pour une utilisation avec des <input>
+   // var buttons = document.getElementsByTagName("input");
+     for(var i=0; i<buttons.length; i+=1) {
+         buttons[i].addEventListener("click", button_click);
+     }
+   });
+    
+   console.log("calculette.js loaded");
+    
+      </script>
+</body>
+</html>

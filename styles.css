@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    border: 2px solid gray;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f0f8ff; /* Bleu clair pour l'écran */
+    width: 300px;
+}
+
+.screen {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    text-align: right;
+    background-color: blueviolet; /* Bleu clair pour l'écran */
+    border: 1px solid blueviolet ;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.blue {
+    background-color: #add8e6; /* Bleu pour les touches de 1 à 9 */
+}
+
+.yellow {
+    background-color: #ffd700; /* Jaune pour les touches + - x / */
+}
+
+.gray {
+    background-color: #2f4f4f; /* Gris anthracite pour les touches ( ) . = <-- */
+    color: #fff;
+}
